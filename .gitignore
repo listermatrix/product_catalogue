@@ -1,0 +1,6 @@
+/vendor
+.env
+.env.backup
+.env.test
+.phpunit.result.cache
+composer.json.lock
