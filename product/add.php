@@ -1,54 +1,3 @@
-<?php
-
-$products = [
-    [
-        'id' =>1,
-        'name' => 'code1',
-        'code' => 'xsdyubh122'
-    ],
-    [
-        'id' =>2,
-        'name' => 'code2',
-        'code' => '6759063abc'
-    ],
-    [
-        'id' =>3,
-        'name' => 'code3',
-        'code' => '56hg431457yh'
-    ],
-    [
-        'id' =>4,
-        'name' => 'code4',
-        'code' => '865hg431457yh'
-    ],
-
-    [
-        'id' =>4,
-        'name' => 'code4',
-        'code' => '865hg431457yh'
-    ],
-
-    [
-        'id' =>4,
-        'name' => 'code4',
-        'code' => '865hg431457yh'
-    ],
-    [
-        'id' =>4,
-        'name' => 'code4',
-        'code' => '865hg431457yh'
-    ],
-
-    [
-        'id' =>4,
-        'name' => 'code4',
-        'code' => '865hg431457yh'
-    ],
-
-
-]
-
-?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -71,13 +20,13 @@ $products = [
             </div>
 
             <div class="col-sm-2 btn-grouwp"">
-                <button class="btn btn-success btn-sm">Save Product</button>
+                <button class="btn btn-success btn-sm" id="save-btn">Save Product</button>
                 <a href="#" onclick="javascript:window.history.back(-1);return false;" class="btn btn-danger btn-sm">Cancel</a>
             </div>
 
     <hr>
     <div class="col-4">
-        <form class="form-horizontal" id="product-form">
+        <form class="form-horizontal" id="product-form" action="store.php" method="post">
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">SKU</label>
                 <div class="col-sm-10">
@@ -168,7 +117,8 @@ $products = [
 
         let dvd =  $('.dvd'),
             book = $('.book'),
-            furniture = $('.furniture');
+            furniture = $('.furniture'),
+            form = $('#product-form');
 
         dvd.hide();
         book.hide();
@@ -196,6 +146,10 @@ $products = [
                 book.hide();
             }
 
+        })
+        
+        $('#save-btn').on('click', function () {
+            form.submit()
         })
     })
 </script>
