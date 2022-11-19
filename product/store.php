@@ -1,22 +1,32 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-use Sirius\Validation\Validator;
+use Function\FormValidator;
 
-$validator = new Validator();
-$validator->add(
-    [
-        'sku:SKU field is required' => 'required',
-        'name:Email field is required' => 'required | email',
-        'price:Price field is required' => 'required | minlength(10];',
-        'product_type:Product Type' => 'required',
-    ]
-);
+$postFields = $_POST;
 
-if ($validator->validate($_POST)) {
-
-    // send notifications to stakeholders
-    // save the form data to a database
-
-} else {}
+//$sku          = $postFields['sku'];
+//$name         = $postFields['name'];
+//$price        = $postFields['price'];
+//$product_type = $postFields['product_type'];
+//$size         = $postFields['size'];
+//$height       = $postFields['height'];
+//$width        = $postFields['width'];
+//$length       = $postFields['length'];
+//$weight       = $postFields['weight'];
 
 
+
+
+$form = new FormValidator($postFields);
+$form->validate();
+$errors  = $form->getErrorMessages();
+
+/** Save to Database **/
+
+
+
+if(empty($errors))
+    dd('no error returned');
+
+echo json_encode($errors);
+exit;

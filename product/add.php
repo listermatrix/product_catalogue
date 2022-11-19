@@ -30,27 +30,27 @@
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">SKU</label>
                 <div class="col-sm-10">
-                    <input type="text"  class="form-control" id="staticEmail" value="">
+                    <input type="text" name="sku"  class="form-control" id="staticEmail" value="">
                 </div>
             </div>
             <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" >
+                    <input type="text" name="name" class="form-control" >
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="inputPassword" class="col-sm-2 col-form-label">Price</label>
                 <div class="col-sm-10">
-                    <input type="number" step="0.01" class="form-control" >
+                    <input type="number" name="price" step="0.01" class="form-control" >
                 </div>
             </div>
 
             <div class="mb-3 row">
                 <label for="product_type" class="col-sm-2 col-form-label">Product Type</label>
                 <div class="col-sm-10">
-                    <select class="form-select" name="type" id="product_type">
+                    <select class="form-select" name="product_type" id="product_type">
                         <option></option>
                         <option value="dvd">DVD</option>
                         <option value="book">Book</option>
@@ -149,7 +149,14 @@
         })
         
         $('#save-btn').on('click', function () {
-            form.submit()
+
+            form.submit();
+            // let url = form.attr('action'),
+            //     data = form.serialize();
+            //
+            // $.post(url,data,function (resp) {
+            //     console.log(resp)
+            // })
         })
     })
 </script>
