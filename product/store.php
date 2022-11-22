@@ -19,14 +19,16 @@ $postFields = $_POST;
 
 $form = new FormValidator($postFields);
 $form->validate();
-$errors  = $form->getErrorMessages();
-
+$validationResult = $form->getErrorMessages();
 /** Save to Database **/
 
 
 
-if(empty($errors))
-    dd('no error returned');
+if(empty($validationResult)){
+    $response = ['code' =>  200, 'message' => "Form validated and submitted successfully"];
+}else {
+    $response = ['code' =>  400, 'message' => $validationResult];
+}
 
-echo json_encode($errors);
+echo json_encode($response);
 exit;

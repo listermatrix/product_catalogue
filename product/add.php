@@ -30,20 +30,26 @@
             <div class="mb-3 row">
                 <label for="staticEmail" class="col-sm-2 col-form-label">SKU</label>
                 <div class="col-sm-10">
-                    <input type="text" name="sku"  class="form-control" id="staticEmail" value="">
+                    <input type="text" name="sku"  class="form-control" id="staticEmail" value="" required>
+                    <div id="sku-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
+
+
+
             </div>
             <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Name</label>
+                <label for="name" class="col-sm-2 col-form-label">Name</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" class="form-control" >
+                    <input id="name" type="text" name="name" class="form-control" >
+                    <div id="name-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
 
             <div class="mb-3 row">
-                <label for="inputPassword" class="col-sm-2 col-form-label">Price</label>
+                <label for="price" class="col-sm-2 col-form-label">Price</label>
                 <div class="col-sm-10">
-                    <input type="number" name="price" step="0.01" class="form-control" >
+                    <input type="number" id="price" name="price" step="0.01" class="form-control" >
+                    <div id="price-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
 
@@ -56,6 +62,7 @@
                         <option value="book">Book</option>
                         <option value="furniture">Furniture</option>
                     </select>
+                    <div id="product_type-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
 
@@ -64,6 +71,7 @@
                 <label for="size" class="col-sm-2 col-form-label">Size</label>
                 <div class="col-sm-10">
                     <input type="number" name="size" id="size" step="0.01" class="form-control" >
+                    <div id="size-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
 
@@ -71,6 +79,7 @@
                 <label for="height" class="col-sm-2 col-form-label">Height</label>
                 <div class="col-sm-10">
                     <input type="number" name="height" id="height" step="0.01" class="form-control" >
+                    <div id="height-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
 
@@ -78,6 +87,7 @@
                 <label for="width" class="col-sm-2 col-form-label">Width</label>
                 <div class="col-sm-10">
                     <input type="number" name="width" id="width" step="0.01" class="form-control" >
+                    <div id="width-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
 
@@ -85,6 +95,7 @@
                 <label for="length" class="col-sm-2 col-form-label">Length</label>
                 <div class="col-sm-10">
                     <input type="number" name="length" id="length" step="0.01" class="form-control" >
+                    <div id="length-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
 
@@ -92,6 +103,7 @@
                 <label for="weight" class="col-sm-2 col-form-label">Weight</label>
                 <div class="col-sm-10">
                     <input type="number" name="weight" id="weight" step="0.01" class="form-control" >
+                    <div id="weight-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                 </div>
             </div>
         </form>
@@ -150,13 +162,36 @@
         
         $('#save-btn').on('click', function () {
 
-            form.submit();
-            // let url = form.attr('action'),
-            //     data = form.serialize();
-            //
-            // $.post(url,data,function (resp) {
-            //     console.log(resp)
-            // })
+            let url = form.attr('action'),
+                data = form.serialize();
+
+
+            $.post(url,data,function (resp) {
+               let results = JSON.parse(resp);
+
+
+               if(results.code === 400) {
+                   $.each(results.message,function (i,error) {
+
+                       console.log(error);
+                       if('sku' in error) $('#sku-error-tag').html(error.sku + ' *')
+                       if('name' in error) $('#name-error-tag').html(error.name + ' *')
+                       if('price' in error) $('#price-error-tag').html(error.price + ' *')
+                       if('product_type' in error) $('#product_type-error-tag').html(error.product_type + ' *')
+                       if('size' in error) $('#size-error-tag').html(error.size + ' *')
+                       if('weight' in error) $('#weight-error-tag').html( error.weight + ' *')
+                       if('height' in error) $('#height-error-tag').html( error.height + ' *')
+                       if('width' in error) $('#width-error-tag').html( error.width + ' *')
+                       if('length' in error) $('#length-error-tag').html( error.length + ' *')
+
+                   })
+               }
+               else {
+                   window.location.href = 'index.php'
+               }
+
+
+            })
         })
     })
 </script>
