@@ -22,7 +22,7 @@ $form->validate();
 $validationResult = $form->getErrorMessages();
 /** Save to Database **/
 
-
+dd($validationResult);
 
 if(empty($validationResult)){
     $response = ['code' =>  200, 'message' => "Form validated and submitted successfully"];
