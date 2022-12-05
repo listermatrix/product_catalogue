@@ -16,6 +16,7 @@ $products = Product::query()->get();
     <title>Product Page</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 <body>
 
@@ -26,18 +27,12 @@ $products = Product::query()->get();
             <h2>Product List</h2>
         </div>
 
-        <div class="col-3">
-                <select class="form-control">
-                    <option></option>
-                    <option>Delete</option>
-                    <option>Revoke</option>
-                </select>
+        <div class="col-2">
+
         </div>
         <div class="col-2">
-                <button class="btn btn-success btn-sm">Apply Action</button>
-        </div>
-        <div class="col-1">
-            <a href="add.php" class="btn btn-primary btn-sm">+ ADD</a>
+            <button class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> DELETE</button>
+            <a href="add.php" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> ADD</a>
         </div>
     </div>
     <hr>
@@ -97,6 +92,14 @@ $products = Product::query()->get();
                ids.splice(index, 1);
             }
             console.log(ids);
+        })
+
+        $('#delete-btn').on('click',function () {
+            let url = 'delete.php',
+            params = {'ids' : ids };
+            $.post('delete.php',params,function (data) {
+                window.location.reload();
+            })
         })
     })
 </script>
