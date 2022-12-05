@@ -1,28 +1,12 @@
 <?php
 
-$products = [
-        [
-            'id' =>1,
-            'name' => 'code1',
-            'code' => 'xsdyubh122'
-        ],
-        [
-            'id' =>2,
-            'name' => 'code2',
-            'code' => '6759063abc'
-        ],
-        [
-            'id' =>3,
-            'name' => 'code3',
-            'code' => '56hg431457yh'
-        ],
-    [
-        'id' =>4,
-        'name' => 'code4',
-        'code' => '865hg431457yh'
-    ],
-]
+require_once __DIR__ . '/../vendor/autoload.php';
+require "../bootstrap.php";
 
+use Function\Constants;
+use Model\Product;
+
+$products = Product::query()->get();
 ?>
 <!doctype html>
 <html lang="en">
@@ -65,13 +49,25 @@ $products = [
         <div class="col-3">
             <div class="card" style="width: 18rem;">
                 <div style="margin-left: 10px">
-                    <input type="checkbox" class="product_class" name="product_id[]" value="<?php echo $product['id'] ?>">
+                    <input type="checkbox" class="product_class" name="product_id[]" value="<?php echo $product->id ?>">
                 </div>
                 <div class="card-body text-center">
-                    <h6 class="card-subtitle mb-2"><?php echo strtoupper($product['code']) ?></h6>
-                    <h6 class="card-subtitle mb-2 text-muted"><?php echo strtoupper($product['name']) ?></h6>
-                    <p class="card-text">100 USD</p>
-                    <p  class="">SIZE 700 MB</p>
+                    <h6 class="card-subtitle mb-2"><?php echo strtoupper($product->sku) ?></h6>
+                    <h6 class="card-subtitle mb-2"><?php echo strtoupper($product->name) ?></h6>
+                    <p class="card-text"><?php echo number_format($product->price,2) ?> $</p>
+                    <p  class=""><?php
+                        if($product->product_type == Constants::FURNITURE)
+                        {
+                            echo "Dimension: <b>{$product->height}x{$product->width}x{$product->length}</b>";
+                        } else if ($product->product_type == Constants::BOOK)
+                        {
+                            echo "Weight: <b>{$product->weight} KG</b>";
+                        }
+                        else
+                        {
+                            echo "SIZE: <b>{$product->SIZE} MB</b>";
+                        }
+                        ?></p>
                 </div>
             </div>
         </div>

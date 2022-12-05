@@ -2,6 +2,7 @@
 
 namespace Function;
 use Function\Constants;
+use Model\Product;
 
 Class FormValidator {
 
@@ -21,6 +22,10 @@ Class FormValidator {
 
       if($data['sku'] == null)
         $this->setMessage('sku');
+
+
+        if(Product::query()->where('sku',$data['sku'])->first())
+            $this->setMessage('sku','SKU has already been used');
 
         if($data['name'] == null)
             $this->setMessage('name');
