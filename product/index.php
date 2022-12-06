@@ -11,13 +11,14 @@
         <div class="col-md-9 col-xs-6  col-sm-8">
             <p style="font-size: 30px;">Product List</p>
         </div>
-
-
         <div class="col-md-3 col-xs-6 col-sm-4">
-            <div class="btn-group">
-                <button class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> MASS DELETE</button>
-                <a href="add.php" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> ADD PRODUCT</a>
-            </div>
+                <form action="delete.php" method="post">
+                    <input type="hidden" name="ids" multiple id="delete_values">
+                    <button class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> MASS DELETE</button>
+                    <a href="add.php" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> ADD PRODUCT</a>
+                </form>
+
+
         </div>
     </div>
     <hr style="border:1px solid black">
@@ -30,8 +31,8 @@
             <?php } ?>
 
         <?php foreach ($products as $product) { ?>
-                 <div class="col-md-3">
-            <div class="panel panel-default">
+             <div class="col-md-3">
+                <div class="panel panel-default">
                 <div class="panel-heading">
                     <div style="margin-left: 10px">
                         <input type="checkbox" class="delete-checkbox" name="product_id[]" value="<?php echo $product->id ?>">
@@ -55,14 +56,10 @@
                         ?></p>
                 </div>
             </div>
-
-        </div>
+            </div>
         <?php } ?>
     </div>
 </div>
-
-
-
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
@@ -81,15 +78,7 @@
 
                ids.splice(index, 1);
             }
-            console.log(ids);
-        })
-
-        $('#delete-btn').on('click',function () {
-            let url = 'delete.php',
-            params = {'ids' : ids };
-            $.post('delete.php',params,function (data) {
-                window.location.reload();
-            })
+            $('#delete_values').val(ids)
         })
     })
 </script>
