@@ -28,7 +28,7 @@
                 <div class="form-group">
                     <label for="staticEmail" class="col-md-3 control-label">SKU</label>
                     <div class="col-md-9">
-                        <input type="text" name="sku"  class="form-control" id="staticEmail" value="" required>
+                        <input type="text" name="sku" id="sku"  class="form-control"  value="" required>
                         <div id="sku-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                 <div class="form-group">
                     <label for="name" class="col-md-3 control-label">Name</label>
                     <div class="col-md-9">
-                        <input id="name" type="text" name="name" class="form-control" >
+                        <input id="name" type="text"  name="name" class="form-control" >
                         <div id="name-error-tag" style="color:red; font-weight:bold; font-style: italic"></div>
                     </div>
                 </div>
