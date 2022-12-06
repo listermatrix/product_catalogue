@@ -13,7 +13,7 @@
 
             <div class="col-md-3 col-xs-6 col-sm-4">
                 <div class="btn-group">
-                    <button class="btn btn-success btn-sm" id="save-btn"><i class="fa fa-save"></i> SAVE</button>
+                    <button class="btn btn-success btn-sm" id="save-btn">SAVE</button>
                     <a href="#" onclick="window.history.back(-1);return false;" class="btn btn-danger btn-sm"><i class="fa fa-times"></i> CANCEL</a>
                 </div>
             </div>
