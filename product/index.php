@@ -50,7 +50,7 @@
                          else if ($product->product_type == $constants::BOOK)
                             echo "Weight: <b>{$product->weight} KG</b>";
                         else
-                            echo "SIZE: <b>{$product->SIZE} MB</b>";
+                            echo "SIZE: <b>{$product->size} MB</b>";
 
                         ?></p>
                 </div>
