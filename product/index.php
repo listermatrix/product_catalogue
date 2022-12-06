@@ -12,11 +12,11 @@
             <p style="font-size: 30px;">Product List</p>
         </div>
         <div class="col-md-3 col-xs-6 col-sm-4">
-                <form action="delete.php" method="post" id="form_delete">
-                    <input type="hidden" name="ids" multiple id="delete_values">
-                    <button  class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> MASS DELETE</button>
-                    <a href="add.php" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> ADD PRODUCT</a>
-                </form>
+            <form action="delete.php" method="post" id="form_delete">
+                <input type="hidden" name="ids" multiple id="delete_values">
+                <button  class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> MASS DELETE</button>
+                <a href="add.php" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> ADD </a>
+            </form>
         </div>
     </div>
     <hr style="border:1px solid black">
@@ -68,8 +68,6 @@
         $('.delete-checkbox').on('click',function () {
             let value = $(this).val()
 
-
-
             if($(this).prop('checked') === true)
             {
                 ids.push(value)
@@ -80,12 +78,6 @@
             }
             $('#delete_values').val(ids)
 
-
-            $('#delete-btn').on('click',function (e) {
-                e.preventDefault();
-                $('.delete-checkbox').parents('.col-md-3').hide();
-                $('#form_delete').submit()
-            })
         })
 
 
