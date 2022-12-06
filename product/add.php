@@ -157,7 +157,7 @@
         })
         
         $('#save-btn').on('click', function () {
-
+            $('#save-btn').attr('disabled',true)
             let url = form.attr('action'),
                 data = form.serialize();
 
@@ -167,6 +167,7 @@
 
 
                if(results.code === 400) {
+                   $('#save-btn').attr('disabled',false)
                    $.each(results.message,function (i,error) {
 
                        console.log(error);
