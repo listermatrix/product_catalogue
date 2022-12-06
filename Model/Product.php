@@ -7,7 +7,6 @@ class Product extends Eloquent
 {
     use SoftDeletes;
 
-
     protected $fillable = [
         'sku','name','price','product_type','size','weight','height','width','length'
     ];
