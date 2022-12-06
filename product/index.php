@@ -34,7 +34,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading">
                     <div style="margin-left: 10px">
-                        <input type="checkbox" class="product_class" name="product_id[]" value="<?php echo $product->id ?>">
+                        <input type="checkbox" class="delete-checkbox" name="product_id[]" value="<?php echo $product->id ?>">
                     </div>
                 </div>
                 <div class="panel-body text-center">
@@ -70,7 +70,7 @@
 <script>
     $(document).ready(function() {
         const ids = [];
-        $('.product_class').on('click',function () {
+        $('.delete-checkbox').on('click',function () {
             let value = $(this).val()
 
             if($(this).prop('checked') === true)
