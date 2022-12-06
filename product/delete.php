@@ -4,6 +4,7 @@ use Function\FormValidator;
 use Model\Product;
 require "../bootstrap.php";
 
+
 if(isset($_POST['ids'])) {
 
 
