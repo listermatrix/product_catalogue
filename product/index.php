@@ -17,8 +17,6 @@
                     <button class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> MASS DELETE</button>
                     <a href="add.php" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> ADD PRODUCT</a>
                 </form>
-
-
         </div>
     </div>
     <hr style="border:1px solid black">
