@@ -135,7 +135,7 @@
         // book.hide();
         // furniture.hide();
 
-        $('#product_type').on('change',function () {
+        $('#productType').on('change',function () {
             let value = $(this).val()
 
             if(value === 'dvd') {
