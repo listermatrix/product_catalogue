@@ -128,9 +128,9 @@
             furniture = $('.furniture'),
             form = $('#product-form');
 
-        dvd.hide();
-        book.hide();
-        furniture.hide();
+        // dvd.hide();
+        // book.hide();
+        // furniture.hide();
 
         $('#product_type').on('change',function () {
             let value = $(this).val()
