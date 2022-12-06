@@ -23,7 +23,7 @@
 
     <div class="row">
         <div class="col-md-6">
-            <form class="form-horizontal" id="product-form" action="store.php" method="post">
+            <form class="form-horizontal" id="product_form" action="store.php" method="post">
 
                 <div class="form-group">
                     <label for="staticEmail" class="col-md-3 control-label">SKU</label>
@@ -51,9 +51,9 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="product_type" class="col-md-3 control-label">Product Type</label>
+                    <label for="productType" class="col-md-3 control-label">Product Type</label>
                     <div class="col-md-9">
-                        <select class="form-control" name="product_type" id="product_type">
+                        <select class="form-control" name="product_type" id="productType">
                             <option></option>
                             <option value="dvd">DVD</option>
                             <option value="book">Book</option>

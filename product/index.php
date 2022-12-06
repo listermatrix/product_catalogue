@@ -15,7 +15,7 @@
 
         <div class="col-md-3 col-xs-6 col-sm-4">
             <div class="btn-group">
-                <button class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> DELETE</button>
+                <button class="btn btn-danger btn-sm" id="delete-btn"><i class="fa fa-trash"></i> MASS DELETE</button>
                 <a href="add.php" class="btn btn-success btn-sm"><i class="fa fa-plus-circle"></i> ADD PRODUCT</a>
             </div>
         </div>
