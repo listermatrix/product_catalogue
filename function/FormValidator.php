@@ -20,43 +20,42 @@ Class FormValidator {
     {
       $data = $this->postData;
 
-      if($data['sku'] == null)
+      if(!isset($data['sku']) || $data['sku'] == null)
         $this->setMessage('sku');
 
-
-        if(Product::query()->where('sku',$data['sku'])->first())
+        if(isset($data['sku']) && Product::query()->where('sku',$data['sku'])->first())
             $this->setMessage('sku','SKU has already been used');
 
-        if($data['name'] == null)
+        if(!isset($data['name']) ||  $data['name'] == null)
             $this->setMessage('name');
 
-        if($data['price'] == null)
+        if(!isset($data['price']) || $data['price'] == null)
             $this->setMessage('price');
 
-        if($data['product_type'] == null)
+        if( !isset($data['product_type']) || $data['product_type'] == null)
             $this->setMessage('product_type');
 
 
-        if($data['product_type'] == Constants::DVD && $data['size'] == null)
+        if(isset($data['product_type']) && $data['product_type'] == Constants::DVD && $data['size'] == null)
             $this->setMessage('size',
                 'size field is required when product type is '.Constants::DVD);
 
-        if($data['product_type'] == Constants::BOOK && $data['weight'] == null)
+        if(isset($data['product_type']) && $data['product_type'] == Constants::BOOK && $data['weight'] == null)
             $this->setMessage('weight',
                 'weight field is required when product type is '.Constants::BOOK);
 
 
-        if($data['product_type'] == Constants::FURNITURE && $data['height'] == null)
+        if(isset($data['product_type']) && $data['product_type'] == Constants::FURNITURE && $data['height'] == null)
             $this->setMessage('height',
                 'height field is required when product type is '.Constants::FURNITURE);
 
 
-        if($data['product_type'] == Constants::FURNITURE && $data['width'] == null)
+        if(isset($data['product_type']) && $data['product_type'] == Constants::FURNITURE && $data['width'] == null)
             $this->setMessage('width',
                 'width field is required when product type is '.Constants::FURNITURE);
 
 
-        if($data['product_type'] == Constants::FURNITURE && $data['length'] == null)
+        if( isset($data['product_type']) && $data['product_type'] == Constants::FURNITURE && $data['length'] == null)
             $this->setMessage('length',
                 'length field is required when product type is '.Constants::FURNITURE);
 

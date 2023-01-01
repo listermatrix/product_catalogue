@@ -1,23 +1,41 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
+
+use Classes\Book;
+use Classes\Dvd;
+use Classes\Furniture;
+use Function\Constants;
 use Function\FormValidator;
 use Model\Product;
+
 require "../bootstrap.php";
 
 $postFields = $_POST;
+$constants = Constants::class;
+
+
 
 $form = new FormValidator($postFields);
 $form->validate();
 $validationResult = $form->getErrorMessages();
-/** Save to Database **/
+
 
 if(empty($validationResult)){
 
-    $product = Product::query()->create($postFields);
+    try {
 
-    if($product) {
+        /** Save to Database **/
+        $product_type = $postFields;
+        $product = match ($product_type) {
+            $constants::BOOK => new Book($postFields),
+            $constants::DVD => new Dvd($postFields),
+            default => new Furniture($postFields),
+        };
+
+        $product->save();
+
         $response = ['code' =>  200, 'message' => "Form validated and submitted successfully"];
-    } else {
+    }catch (\Exception $e) {
         $response = ['code' =>  400, 'message' => "Form Submission failed"];
     }
 

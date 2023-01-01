@@ -9,7 +9,8 @@
         "psr-4": {
             "Database\\": "database",
             "Function\\": "function",
-            "Model\\": "Model"
+            "Model\\": "Model",
+            "Classes\\": "Classes"
         }
     }
 }

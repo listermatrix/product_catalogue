@@ -1,7 +1,7 @@
-<?php include __DIR__ . '/../product/head.php';?>
+<?php include __DIR__ . '/../pages/head.php';?>
 <!doctype html>
 <html lang="en">
-<?php include __DIR__ . '/../product/css/script.php';?>
+<?php include __DIR__ . '/../pages/css/script.php';?>
 
     <body>
 
@@ -44,14 +44,13 @@
                 </div>
                 <div class="panel-footer">
                     <p  class="text-center text-font"><?php
-                        if($product->product_type == $constants::FURNITURE)
-                            echo "Dimension: <b>{$product->height}x{$product->width}x{$product->length}</b>";
-                         else if ($product->product_type == $constants::BOOK)
-                            echo "Weight: <b>{$product->weight} KG</b>";
-                        else
-                            echo "SIZE: <b>{$product->size} MB</b>";
+                        $label = match ($product->product_type) {
+                            $constants::BOOK => "Weight: <b>{$product->weight} KG</b>",
+                            $constants::DVD => "SIZE: <b>{$product->size} MB</b>",
+                            default =>"Dimension: <b>{$product->height}x{$product->width}x{$product->length}</b>"
+                        };
 
-                        ?></p>
+                        echo  $label; ?></p>
                 </div>
             </div>
             </div>
@@ -60,29 +59,7 @@
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function() {
-        const ids = [];
-        $('.delete-checkbox').on('click',function () {
-            let value = $(this).val()
-
-            if($(this).prop('checked') === true)
-            {
-                ids.push(value)
-            }else {
-                const index = ids.indexOf(value);
-
-               ids.splice(index, 1);
-            }
-            $('#delete_values').val(ids)
-
-        })
-
-
-    })
-</script>
+<?php include __DIR__ . '/../pages/js/script.php';?>
 </body>
 </html>
 

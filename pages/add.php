@@ -1,6 +1,6 @@
 <!doctype html>
 <html lang="en">
-<?php include __DIR__ . '/../product/css/script.php';?>
+<?php include __DIR__ . '/../pages/css/script.php';?>
 <body>
 
 <div class="container">
@@ -120,82 +120,7 @@
 
 
 
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
-<script>
-    $(document).ready(function() {
-
-        let dvd =  $('.dvd'),
-            book = $('.book'),
-            furniture = $('.furniture'),
-            form = $('#product_form');
-
-        // dvd.hide();
-        // book.hide();
-        // furniture.hide();
-
-        $('#productType').on('change',function () {
-            let value = $(this).val()
-
-            if(value === 'dvd') {
-                dvd.show();
-                furniture.hide();
-                book.hide();
-            }
-            if (value === 'book')
-            {
-                book.show();
-                dvd.hide();
-                furniture.hide();
-            }
-
-            if(value === 'furniture')
-            {
-                furniture.show();
-                dvd.hide();
-                book.hide();
-            }
-
-        })
-
-        form.on('submit', function (e) {
-            $('#save-btn').attr('disabled',true)
-            e.preventDefault();
-            let url = form.attr('action'),
-                data = form.serialize();
-
-
-            $.post(url,data,function (resp) {
-               let results = JSON.parse(resp);
-
-
-               if(results.code === 400) {
-                   $('#save-btn').attr('disabled',false)
-                   $.each(results.message,function (i,error) {
-
-                       console.log(error);
-                       if('sku' in error) $('#sku-error-tag').html(error.sku + ' *')
-                       if('name' in error) $('#name-error-tag').html(error.name + ' *')
-                       if('price' in error) $('#price-error-tag').html(error.price + ' *')
-                       if('product_type' in error) $('#product_type-error-tag').html(error.product_type + ' *')
-                       if('size' in error) $('#size-error-tag').html(error.size + ' *')
-                       if('weight' in error) $('#weight-error-tag').html( error.weight + ' *')
-                       if('height' in error) $('#height-error-tag').html( error.height + ' *')
-                       if('width' in error) $('#width-error-tag').html( error.width + ' *')
-                       if('length' in error) $('#length-error-tag').html( error.length + ' *')
-
-                   })
-               }
-               else {
-                   window.location.href = 'index.php'
-               }
-
-
-            })
-        })
-    })
-</script>
+<?php include __DIR__ . '/../pages/js/script.php';?>
 </body>
 </html>
 
