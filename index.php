@@ -1,2 +1,2 @@
 <?php
-header("Location:product/index.php");
+header("Location:pages/index.php");
