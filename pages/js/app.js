@@ -32,7 +32,7 @@ $(document).ready(function () {
     })
 
     form.on('submit', function (e) {
-        $('#save-btn').attr('disabled', false)
+        $('#save-btn').attr('disabled', true)
         e.preventDefault();
         let url = form.attr('action'),
             data = form.serialize();
