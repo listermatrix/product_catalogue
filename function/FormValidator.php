@@ -15,7 +15,6 @@ Class FormValidator {
         $this->postData = $formValues;
     }
 
-
     public function validate()
     {
       $data = $this->postData;
