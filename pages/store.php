@@ -6,7 +6,6 @@ use Classes\Dvd;
 use Classes\Furniture;
 use Function\Constants;
 use Function\FormValidator;
-use Model\Product;
 
 require "../bootstrap.php";
 
