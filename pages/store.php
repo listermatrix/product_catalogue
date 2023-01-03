@@ -36,7 +36,7 @@ if(empty($validationResult)){
 
         $response = ['code' =>  200, 'message' => "Form validated and submitted successfully"];
     }catch (\Exception $e) {
-        $response = ['code' =>  400, 'message' => "Form Submission failed"];
+        $response = ['code' =>  400, 'message' => $e->getMessage() ?? "Form Submission failed"];
     }
 
 }else {
