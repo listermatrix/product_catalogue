@@ -113,13 +113,6 @@
 </div>
 
 
-
-
-
-
-
-
-
 <?php include __DIR__ . '/../pages/js/script.php';?>
 </body>
 </html>

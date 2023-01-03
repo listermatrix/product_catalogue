@@ -10,7 +10,7 @@ if(isset($_POST['ids'])) {
 
     $id = explode(',',$_POST['ids']);
     $product = Product::query()->whereIn('id', $id)
-        ->delete();
+        ->forceDelete();
 }
 
 header("Location:index.php");

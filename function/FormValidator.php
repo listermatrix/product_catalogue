@@ -22,9 +22,6 @@ Class FormValidator {
       if(!isset($data['sku']) || $data['sku'] == null)
         $this->setMessage('sku');
 
-
-      dd(Product::query()->where('sku',$data['sku'])->first());
-
         if(isset($data['sku']) && Product::query()->where('sku',$data['sku'])->first())
             $this->setMessage('sku','SKU has already been used');
 
