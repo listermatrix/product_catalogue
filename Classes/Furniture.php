@@ -1,6 +1,6 @@
 <?php
 namespace Classes;
-use  Model\Product as Prod;
+use Model\Product as Prod;
 
 class Furniture extends Product
 {
